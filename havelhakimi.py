@@ -20,3 +20,8 @@ def Havel_Hakimi_Process(L, show = True):
 def is_graphic(L):
   Havel_Hakimi_Process(L)
   return sum(L) == 0
+
+def residue(G):
+  L = degree_sequence(G)
+  Havel_Hakimi_Process(L)
+  return len(L)
