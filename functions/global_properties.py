@@ -1,3 +1,5 @@
+import networkx as nx
+
 def V(G):
   return nx.nodes(G)
 
