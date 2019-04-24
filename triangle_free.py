@@ -1,3 +1,6 @@
+import networkx as nx
+
+G = nx.read_edgelist('test_graphs/G1.txt')
 
 print('The graph vertices are {}'.format(V(G)))
 print('The graph edges are {}'.format(E(G)))
