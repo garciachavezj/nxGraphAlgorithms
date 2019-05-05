@@ -2,7 +2,7 @@ import sys
 
 class Graph(): 
 
-	def __init__(self, vertices): 
+	def __init__(self, vertices): # initializing the vertices of the graph
 		self.V = vertices 
 		self.graph = [[0 for column in range(vertices)] 
 					for row in range(vertices)] 
@@ -16,26 +16,25 @@ class Graph():
 		min = sys.maxsize 
 
 		for v in range(self.V): 
-			if key[v] < min and mstSet[v] == False: 
-				min = key[v] 
-				min_index = v 
+			if key[v] < min and mstSet[v] == False:  # checking if 'min' is still the minimum val
+				min = key[v] # changing value of 'min' if min isnt the minimum anymore
+				min_index = v # storing its index, since we have to return it
 
-		return min_index 
+		return min_index # return index corresponding to minimum we found above
 
-	def primMST(self): 
-
-		
+	def primMST(self):
 		key = [sys.maxsize] * self.V 
 		parent = [None] * self.V 
 		key[0] = 0
 		mstSet = [False] * self.V 
 
-		parent[0] = -1 
+		parent[0] = -1 # first node is the root of the graph
 
 		for cout in range(self.V): 
 			u = self.minKey(key, mstSet) 
-			mstSet[u] = True
-			for v in range(self.V): 
+			mstSet[u] = True # iterating through the mstSet
+			for v in range(self.V): # update distances when current distance > new distance 
+									# and it isnt in the shortest path tree
 				if self.graph[u][v] > 0 and mstSet[v] == False and key[v] > self.graph[u][v]: 
 						key[v] = self.graph[u][v] 
 						parent[v] = u 
